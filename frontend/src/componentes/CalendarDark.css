@@ -1,0 +1,161 @@
+/* Sobreescribe estilos de react-calendar para el tema oscuro */
+.react-calendar-dark {
+    width: 100%;
+    max-width: 350px;
+    background: #2b2b2b;
+    border: 1px solid #555;
+    border-radius: 8px;
+    font-family: inherit; /* Hereda de tu font-family global */
+    line-height: 1.125em;
+    color: #eee; /* Color del texto general del calendario */
+}
+
+/* Estilos de navegación del calendario */
+.react-calendar-dark .react-calendar__navigation button {
+    color: #fff;
+    min-width: 44px;
+    background: none;
+    font-size: 1.5em;
+    transition: background-color 0.3s ease;
+}
+
+.react-calendar-dark .react-calendar__navigation button:enabled:hover,
+.react-calendar-dark .react-calendar__navigation button:enabled:focus {
+    background-color: #444;
+}
+
+.react-calendar-dark .react-calendar__navigation button:disabled {
+    background-color: #3a3a3a;
+}
+
+/* Estilos de los días de la semana */
+.react-calendar-dark .react-calendar__month-view__weekdays {
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 0.75em;
+    color: #aaa; /* Color de los días de la semana */
+}
+
+/* Estilos base de las celdas de los días del mes */
+.react-calendar-dark .react-calendar__month-view__days__day {
+    color: #eee; /* Color de los días del mes */
+}
+
+.react-calendar-dark .react-calendar__tile {
+    background: none; /* Por defecto, sin fondo para que los resaltados puedan aplicarse */
+    height: 3em;
+    color: #eee;
+    transition: background-color 0.3s ease;
+    border-radius: 4px; /* Asegura que todos los tiles tengan esquinas redondeadas */
+}
+
+/* Estilos de interacción de las celdas */
+.react-calendar-dark .react-calendar__tile:enabled:hover,
+.react-calendar-dark .react-calendar__tile:enabled:focus {
+    background-color: #666;
+    color: #fff;
+}
+
+.react-calendar-dark .react-calendar__tile:disabled {
+    background-color: #3a3a3a;
+    color: #777;
+}
+
+/* Estilos para el día actual */
+.react-calendar-dark .react-calendar__tile--now {
+    background: #007bff; /* Azul para el día actual */
+    color: white;
+}
+
+.react-calendar-dark .react-calendar__tile--now:enabled:hover,
+.react-calendar-dark .react-calendar__tile--now:enabled:focus {
+    background: #0056b3;
+}
+
+/* Estilos para el día seleccionado (activo) */
+.react-calendar-dark .react-calendar__tile--active {
+    background: #0056b3; /* Color del día seleccionado */
+    color: white;
+}
+
+.react-calendar-dark .react-calendar__tile--active:enabled:hover,
+.react-calendar-dark .react-calendar__tile--active:enabled:focus {
+    background: #004494;
+}
+
+
+/* --- REGLAS DE RESALTADO (COLORES DE FONDO) --- */
+/* Estas reglas deben ir DESPUÉS de las reglas generales de .react-calendar__tile, --now, --active */
+
+/* Resaltado para los domingos */
+.react-calendar-dark .react-calendar__month-view__days__day.highlight-sunday {
+    background-color: #007bff !important; /* Un azul bonito para resaltar */
+    color: white !important; /* Texto blanco para contraste */
+    font-weight: bold;
+}
+
+/* Resaltado base para cualquier fecha con animes (estreno o próximo capítulo) */
+/* Este selector combinado es crucial para darle más especificidad y prevalecer */
+.react-calendar-dark .react-calendar__tile.highlight-date {
+    background-color: #ffc107 !important; /* Amarillo/naranja vibrante para diferenciarlas */
+    color: #333 !important; /* Color de texto oscuro para contraste */
+    font-weight: bold;
+}
+
+/* Reglas específicas para cuando highlight-date se combina con active o now */
+/* Esto garantiza que el color de resaltado prevalezca sobre los colores de "activo" o "hoy" */
+.react-calendar-dark .react-calendar__tile--active.highlight-date,
+.react-calendar-dark .react-calendar__tile--now.highlight-date {
+    background-color: #ffc107 !important; /* Mantén el color de resaltado */
+    color: #333 !important;
+}
+
+/* Estilo para el hover/focus sobre un día resaltado */
+.react-calendar-dark .react-calendar__tile:enabled:hover.highlight-date,
+.react-calendar-dark .react-calendar__tile:enabled:focus.highlight-date {
+    background-color: #e0a800 !important; /* Un tono más oscuro del amarillo/naranja al pasar el ratón */
+    color: #333 !important;
+}
+
+/* Opcional: Estilo para un domingo que también tiene un lanzamiento (si quieres un color distinto) */
+.react-calendar-dark .highlight-sunday.highlight-date {
+    background-color: #20c997 !important; /* Por ejemplo, un verde para domingos con lanzamientos */
+    color: white !important;
+}
+
+
+/* --- ESTILOS BÁSICOS DE APP (si no tienes un App.css separado) --- */
+/* Si ya tienes un App.css, estas reglas deberían ir allí. */
+.App {
+    text-align: center;
+}
+
+.App-header {
+    background-color: #282c34;
+    min-height: 10vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+    margin-bottom: 20px;
+}
+
+.calendar-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+/* Ajustes para el calendario si es necesario */
+.react-calendar {
+    width: 100%; /* Ajusta el ancho según tu diseño */
+    max-width: 600px; /* Ancho máximo */
+    border: 1px solid #a0a096;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.125em;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}

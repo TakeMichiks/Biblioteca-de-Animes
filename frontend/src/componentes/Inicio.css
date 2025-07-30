@@ -1,0 +1,214 @@
+/* src/components/Inicio.css */
+
+/* Estilos generales del contenedor de la página Inicio */
+.inicio-container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    color: #eee; /* Color de texto claro para el tema oscuro */
+}
+
+.inicio-title {
+    color: #fff; /* Título principal en blanco */
+    margin-bottom: 10px;
+}
+
+.inicio-description {
+    margin-bottom: 20px;
+    color: #ccc; /* Descripción en gris claro */
+}
+
+/* Contenedor principal para las dos columnas (animes y calendario) */
+.content-layout {
+    display: flex; /* Habilita Flexbox para organizar los hijos en una fila */
+    gap: 30px; /* Espacio entre las columnas */
+    flex-wrap: wrap; /* Permite que las columnas se envuelvan a una nueva fila en pantallas pequeñas */
+    justify-content: center; /* Centra los paneles si el espacio es menor */
+}
+
+/* Estilos para el panel de Animes (columna izquierda) */
+.animes-panel {
+    flex: 3; /* Ocupa 3 partes de espacio relativo dentro del flex container */
+    min-width: 300px; /* Asegura que no se haga demasiado pequeño */
+    background-color: #333; /* Fondo oscuro */
+    padding: 20px;
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Sombra para profundidad */
+}
+
+/* Estilos para el panel del Calendario (columna derecha) */
+.calendar-panel {
+    flex: 1; /* Ocupa 1 parte de espacio relativo */
+    min-width: 280px; /* Asegura un ancho mínimo para que el calendario se vea bien */
+    background-color: #333; /* Fondo oscuro */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    display: flex; /* También usa flex para centrar el calendario verticalmente si es necesario */
+    flex-direction: column;
+    align-items: center; /* Centra el contenido horizontalmente en este panel */
+}
+
+.section-title {
+    color: #fff;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #555; /* Línea divisoria */
+    padding-bottom: 5px;
+}
+
+/* Estilos para la lista de tarjetas de anime */
+.anime-list {
+    display: grid; /* Usa Grid para organizar las tarjetas de anime */
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Columnas responsivas: mínimo 150px, máximo 1fr */
+    gap: 20px; /* Espacio entre las tarjetas */
+}
+
+.anime-card {
+    background-color: #444; /* Fondo de la tarjeta */
+    border-radius: 8px;
+    overflow: hidden; /* Oculta cualquier contenido que se desborde */
+    text-align: center;
+    padding-bottom: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.anime-cover {
+    width: 100%;
+    height: 200px; /* Altura fija para las imágenes */
+    object-fit: cover; /* Recorta la imagen para que encaje sin distorsión */
+    border-bottom: 1px solid #555;
+}
+
+.anime-title {
+    font-size: 1em;
+    margin: 10px 5px 5px;
+    color: #fff;
+    white-space: nowrap; /* Evita que el texto del título se rompa */
+    overflow: hidden; /* Oculta el texto que se desborda */
+    text-overflow: ellipsis; /* Añade puntos suspensivos si el texto es muy largo */
+}
+
+.anime-status, .anime-chapters {
+    font-size: 0.85em;
+    color: #bbb;
+    margin: 0 5px;
+}
+
+/* ESTILOS PARA EL CALENDARIO (REACT-CALENDAR) */
+/* Sobreescribe los estilos por defecto para un tema oscuro */
+.react-calendar {
+    width: 100%; /* El calendario ocupa todo el ancho de su contenedor */
+    max-width: 350px; /* Pero no se expande más allá de 350px */
+    background-color: #2b2b2b; /* Fondo del calendario */
+    border: 1px solid #555; /* Borde */
+    border-radius: 8px;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.125em;
+}
+
+.react-calendar button {
+    margin: 0;
+    border: 0;
+    outline: none;
+    color: #eee; /* Color de los números de los días y texto general del calendario */
+}
+
+.react-calendar button:enabled:hover {
+    background-color: #555; /* Efecto hover para los días */
+}
+
+.react-calendar__navigation button {
+    color: #fff; /* Color de los botones de navegación (flechas, mes/año) */
+    min-width: 44px;
+    background: none;
+    font-size: 1.5em;
+}
+
+.react-calendar__navigation button:enabled:hover,
+.react-calendar__navigation button:enabled:focus {
+    background-color: #444; /* Hover de los botones de navegación */
+}
+
+.react-calendar__month-view__weekdays {
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 0.8em;
+    color: #aaa; /* Color de los nombres de los días de la semana */
+}
+
+.react-calendar__month-view__days__day--weekend {
+    color: #a00; /* Color rojo para los fines de semana */
+}
+
+.react-calendar__tile--now {
+    background: #007bff; /* Color para el día actual */
+    color: white;
+    border-radius: 4px;
+}
+
+.react-calendar__tile--active {
+    background: #0056b3; /* Color para el día seleccionado */
+    color: white;
+    border-radius: 4px;
+}
+
+.react-calendar__tile:enabled:hover,
+.react-calendar__tile:enabled:focus {
+    background-color: #666; /* Hover general de las celdas */
+    color: #fff;
+}
+
+.react-calendar__tile--active:enabled:hover,
+.react-calendar__tile--active:enabled:focus {
+    background: #004494; /* Hover del día seleccionado */
+}
+
+.react-calendar__tile {
+    padding: 10px 6.6667px;
+}
+
+/* Estilos para el mensaje (éxito/error) */
+.mensaje {
+    background-color: #28a745; /* Verde para éxito */
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    text-align: center;
+    opacity: 0.9;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.mensaje.error {
+    background-color: #dc3545; /* Rojo para error */
+}
+
+/* MEDIA QUERIES PARA RESPONSIVIDAD */
+/* Para pantallas medianas (tablets) */
+@media (max-width: 768px) {
+    .content-layout {
+        flex-direction: column; /* Apila las columnas verticalmente */
+        align-items: center; /* Centra los paneles apilados */
+    }
+
+    .animes-panel,
+    .calendar-panel {
+        width: 100%; /* Ocupan todo el ancho disponible */
+        max-width: 500px; /* Pero con un límite para que no sean demasiado anchos en tablets */
+    }
+
+    .anime-list {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); /* Reduce el tamaño de las tarjetas de anime */
+    }
+
+    .anime-cover {
+        height: 160px; /* Reduce la altura de las portadas */
+    }
+}
+
+/* Para pantallas pequeñas (móviles) */
+@media (max-width: 480px) {
+    .anime-list {
+        grid-template-columns: 1fr; /* Una sola columna para las tarjetas de anime */
+    }
+}

@@ -1,0 +1,412 @@
+/* Estilos globales y del contenedor principal */
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: #222; /* Fondo general oscuro para todo el body */
+    color: #eee;
+  }
+  
+  code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+      monospace;
+  }
+  
+  .app-container {
+      margin: auto;
+      padding: 20px;
+      min-height: 100vh;
+      width: 100%;
+      box-sizing: border-box;
+      background-color: #222; /* Asegura el fondo oscuro */
+  }
+  
+  /* Barra de navegación superior */
+  .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #333;
+      padding: 10px 20px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  }
+  
+  .navbar-brand {
+      color: #fff;
+      font-size: 1.5em;
+      font-weight: bold;
+  }
+  
+  .navbar-links {
+      display: flex;
+      gap: 20px;
+  }
+  
+  .navbar-link {
+      color: #fff;
+      text-decoration: none;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+  }
+  
+  .navbar-link:hover {
+      background-color: #555;
+  }
+  
+  /* Contenedor principal de contenido para las páginas */
+  .main-content {
+      padding: 20px;
+      background-color: #222; /* Fondo del contenido principal */
+      border-radius: 8px;
+  }
+  
+  /* Layout de la sección de inicio (animes + calendario) */
+  .inicio-content-layout {
+      display: flex;
+      gap: 30px; /* Espacio entre los paneles principales */
+      flex-wrap: wrap;
+      justify-content: center;
+  }
+  
+  /* Panel de animes */
+  .animes-panel {
+      flex: 3;
+      min-width: 300px;
+      background-color: #333;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      margin-bottom: 20px; /* Espacio para cuando se apilan en columnas */
+  }
+  
+  /* Panel del calendario */
+  .calendar-panel {
+      flex: 1;
+      min-width: 330px;
+      background-color: #333;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      color: #eee;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+  }
+  
+  /* Títulos de las secciones */
+  .section-title {
+      font-size: 1.8em;
+      color: #fff;
+      margin-bottom: 20px;
+      text-align: center;
+  }
+  
+  /* Contenedor de la lista de animes (grid) */
+  .anime-list-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 15px; /* Espacio entre las tarjetas individuales */
+      justify-content: center;
+  }
+  
+  /* Estilo de cada tarjeta de anime */
+  .anime-card {
+      border: none; /* ELIMINADO EL BORDE */
+      border-radius: 8px;
+      padding: 10px;
+      text-align: center;
+      background-color: #444;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+  }
+  
+  .anime-card-image {
+      width: 100%;
+      height: 200px; /* Altura por defecto */
+      object-fit: cover;
+      border-radius: 4px;
+      margin-bottom: 10px;
+      cursor: pointer;
+  }
+  
+  .anime-card-title {
+      font-size: 1.1em;
+      font-weight: bold;
+      margin-bottom: 5px;
+      max-height: 3em;
+      overflow: hidden;
+      text-overflow: ellipsis;
+  }
+  
+  .anime-card-status {
+      font-size: 0.9em;
+      color: #bbb;
+  }
+  
+  /* Botones generales */
+  .action-button {
+      padding: 10px 20px;
+      border-radius: 5px;
+      border: none;
+      cursor: pointer;
+      font-size: 1em;
+  }
+  
+  .primary-button {
+      background-color: #3498db;
+      color: #fff;
+  }
+  
+  .secondary-button {
+      background-color: #555;
+      color: #fff;
+  }
+  
+  .delete-button {
+      background-color: #e74c3c;
+      color: #fff;
+  }
+  
+  /* Estilos de navegación */
+  .nav-item-style {
+      cursor: pointer;
+      padding: 10px 15px;
+      margin: 0 5px;
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: #ccc;
+      border-bottom: 3px solid transparent;
+      transition: color 0.3s ease, border-bottom 0.3s ease;
+  }
+  
+  .nav-item-active-style {
+      color: #007bff;
+      border-bottom: 3px solid #007bff;
+      font-weight: bold;
+  }
+  
+  /* Estilos de filtros/botones */
+  .filter-button-style {
+      cursor: pointer;
+      padding: 8px 15px;
+      border-radius: 20px;
+      border: 1px solid #555;
+      background-color: #444;
+      color: #eee;
+      font-weight: normal;
+      transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .filter-button-active-style {
+      background-color: #007bff;
+      color: white;
+      font-weight: bold;
+      border: 1px solid #007bff;
+  }
+  
+  /* Login/Register */
+  .login-register-container {
+      max-width: 400px;
+      margin: auto;
+      padding: 20px;
+      font-family: "'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif";
+      background-color: #333;
+      color: #eee;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  }
+  
+  .login-register-input {
+      width: calc(100% - 16px);
+      margin-bottom: 10px;
+      padding: 8px;
+      border-radius: 4px;
+      border: 1px solid #555;
+      background-color: #444;
+      color: #eee;
+  }
+  
+  .login-register-button {
+      width: 48%;
+      padding: 10px 15px;
+      border-radius: 5px;
+      border: none;
+      background-color: #007bff;
+      color: white;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background-color 0.3s ease;
+  }
+  
+  .login-register-button-secondary {
+      margin-left: 4%;
+      background-color: #6c757d;
+  }
+  
+  /* MODALES - Reutilizando clases */
+  .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.7);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+  }
+  
+  .modal-content {
+      background-color: #333;
+      padding: 30px;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 700px;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+      color: #eee;
+  }
+  
+  .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      border-bottom: 1px solid #555;
+      padding-bottom: 10px;
+  }
+  
+  .modal-title {
+      font-size: 2em;
+      color: #fff;
+  }
+  
+  .close-button {
+      background-color: #e74c3c;
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      font-size: 1.2em;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+  
+  .modal-body {
+      margin-bottom: 20px;
+  }
+  
+  .modal-image {
+      width: 100%;
+      max-height: 300px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 15px;
+  }
+  
+  .modal-description {
+      font-size: 1.1em;
+      line-height: 1.6;
+      margin-bottom: 15px;
+  }
+  
+  .modal-details {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-bottom: 20px;
+  }
+  
+  .detail-item {
+      background-color: #444;
+      padding: 8px 12px;
+      border-radius: 5px;
+      font-size: 0.9em;
+      color: #fff;
+  }
+  
+  .modal-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+  }
+  
+  /* Media Queries para responsividad */
+  @media (max-width: 768px) {
+      .inicio-content-layout {
+          flex-direction: column;
+          gap: 20px; /* Un poco de espacio cuando se apilan */
+      }
+  
+      .animes-panel,
+      .calendar-panel {
+          width: 100%;
+          max-width: 500px; /* Limita el ancho máximo en pantallas más pequeñas */
+          margin: 0 auto; /* Centra los paneles apilados */
+      }
+  
+      .anime-list-grid {
+          grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); /* Tarjetas más pequeñas en tabletas */
+          gap: 10px;
+      }
+  
+      .anime-card-image {
+          height: 160px; /* Altura de imagen reducida para pantallas más pequeñas */
+      }
+  
+      .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px;
+      }
+      .navbar-links {
+        flex-direction: column;
+        width: 100%;
+        gap: 5px;
+        margin-top: 10px;
+      }
+      .navbar-link {
+        width: 100%;
+        text-align: center;
+      }
+      .logout-button {
+        margin-left: 0;
+        width: 100%;
+        margin-top: 10px;
+      }
+      .filter-buttons-container {
+        flex-direction: column;
+        gap: 10px;
+      }
+  }
+  
+  @media (max-width: 480px) {
+      .anime-list-grid {
+          grid-template-columns: 1fr; /* Una sola columna en móviles muy pequeños */
+          gap: 10px;
+      }
+  
+      .anime-card-image {
+          height: 180px; /* Ajuste para que se vea mejor en una sola columna */
+      }
+  
+      .login-register-container {
+          padding: 15px;
+      }
+  }
