@@ -18,9 +18,13 @@ export default function ModalEditarAnime({ onClose, onAnimeUpdated, token, API_U
     const [fechaEstreno, setFechaEstreno] = useState(anime.fechaEstreno ? new Date(anime.fechaEstreno).toISOString().split('T')[0] : '');
     const [diaSemanaEstreno, setDiaSemanaEstreno] = useState(String(anime.diaSemanaEstreno ?? '')); // Convertir a string, si es null/undefined, será ''
     const [horaEstreno, setHoraEstreno] = useState(anime.horaEstreno ?? '');
-    // NUEVOS ESTADOS PARA EL PRÓXIMO CAPÍTULO
-    const [proximoCapituloFecha, setProximoCapituloFecha] = useState(anime.proximoCapituloFecha ? new Date(anime.proximoCapituloFecha).toISOString().split('T')[0] : '');
-    const [proximoCapituloNumero, setProximoCapituloNumero] = useState(String(anime.proximoCapituloNumero ?? '')); // Convertir a string, si es null/undefined, será ''
+    
+    // CORRECCIÓN AQUÍ: Usar 'initialRecurringChapterDate' para la fecha del próximo capítulo
+    const [proximoCapituloFecha, setProximoCapituloFecha] = useState(anime.initialRecurringChapterDate ? new Date(anime.initialRecurringChapterDate).toISOString().split('T')[0] : '');
+    const [proximoCapituloNumero, setProximoCapituloNumero] = useState(String(anime.numberOfRecurringChapters ?? '')); // Usar 'numberOfRecurringChapters'
+
+    // Log para depuración: verificar el anime prop al inicio del modal
+    console.log('[ModalEditarAnime] Inicializando con anime:', anime);
 
 
     const handleSubmit = async (e) => {
@@ -34,21 +38,17 @@ export default function ModalEditarAnime({ onClose, onAnimeUpdated, token, API_U
         formData.append('capTotales', capTotales);
         formData.append('puntuacion', puntuacion);
 
-        // Si se seleccionó un nuevo archivo, o si la URL de la portada se cambió/borró
         if (portadaFile) {
             formData.append('portadaFile', portadaFile);
         } else {
-            // Si portadaUrl está vacío, se envía como cadena vacía para que el backend la borre
             formData.append('portada', portadaUrl);
         }
 
-        // AÑADIR NUEVOS CAMPOS AL FormData
-        // Solo añadir si tienen un valor para evitar enviar cadenas vacías al backend que podrían causar problemas
         if (fechaEstreno) formData.append('fechaEstreno', fechaEstreno);
-        if (diaSemanaEstreno !== '') formData.append('diaSemanaEstreno', diaSemanaEstreno); // Envía solo si tiene un valor
+        if (diaSemanaEstreno !== '') formData.append('diaSemanaEstreno', diaSemanaEstreno);
         if (horaEstreno) formData.append('horaEstreno', horaEstreno);
-        // FIX: Se asume que estos campos en el backend son 'initialRecurringChapterDate' y 'numberOfRecurringChapters'
-        // Si los nombres en el backend son 'proximoCapituloFecha' y 'proximoCapituloNumero', por favor, avísame para ajustar.
+        
+        // Asegurarse de enviar los nombres correctos al backend
         if (proximoCapituloFecha) formData.append('initialRecurringChapterDate', proximoCapituloFecha);
         if (proximoCapituloNumero !== '') formData.append('numberOfRecurringChapters', proximoCapituloNumero);
 
@@ -77,7 +77,7 @@ export default function ModalEditarAnime({ onClose, onAnimeUpdated, token, API_U
             const { data } = await axios.get(`${API_URL}/api/scrape?query=${encodeURIComponent(titulo + ' anime cover')}`);
             if (data.imageUrl) {
                 setPortadaUrl(data.imageUrl);
-                setPortadaFile(null); // Asegúrate de limpiar el archivo si se usa una URL
+                setPortadaFile(null);
             } else {
                 onMessage('No se encontraron imágenes para el título proporcionado.');
             }
@@ -87,7 +87,6 @@ export default function ModalEditarAnime({ onClose, onAnimeUpdated, token, API_U
         }
     };
 
-    // Estilos para el modal
     const modalOverlayStyle = {
         position: 'fixed',
         top: 0,
@@ -110,7 +109,7 @@ export default function ModalEditarAnime({ onClose, onAnimeUpdated, token, API_U
         boxShadow: '0 4px 10px rgba(0, 0, 0, 0.5)',
         color: '#eee',
         maxHeight: '80vh',
-        overflowY: 'auto', // Permite scroll si el contenido es muy largo
+        overflowY: 'auto',
     };
 
     const modalInputStyle = {
